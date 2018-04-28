@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.example</groupId>
+	<artifactId>webapp</artifactId>
+	<packaging>war</packaging>
+	<version>${revision}</version>
+	<name>Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<!-- Default Version if none provided -->
+	<properties>
+		<revision>1.0.0-SNAPSHOT</revision>
+	</properties>
+
+	<!-- Repos 
+	<repositories>
+		<repository>
+			<id>rubygems-proxy</id>
+			<name>Rubygems Proxy</name>
+			<url>http://rubygems-proxy.torquebox.org/releases</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories> -->
+	
+	<repositories>
+	    <repository>
+	      <id>codelds</id>
+	      <url>https://code.lds.org/nexus/content/groups/main-repo</url>
+	    </repository>
+   </repositories>
+
+	<!-- Dependencies -->
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+<!-- 		<dependency>
+			<groupId>rubygems</groupId>
+			<artifactId>rails</artifactId>
+			<version>5.0.1</version>
+			<type>gem</type>
+		</dependency> -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>6.0.3</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.oracle</groupId>
+		    <artifactId>ojdbc6</artifactId>
+		    <version>11.2.0.3</version>
+		</dependency>
+	</dependencies>
+
+
+	<build>
+		<finalName>webapp-${revision}</finalName>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>br.com.ingenieux</groupId>
+					<artifactId>beanstalk-maven-plugin</artifactId>
+					<version>1.4.4</version>
+				</plugin>
+
+				<!-- The resulting pom file within the repository will correctly contain 
+					the resolved version -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>flatten-maven-plugin</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<updatePomFile>true</updatePomFile>
+					</configuration>
+					<executions>
+						<execution>
+							<id>flatten</id>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>flatten</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>flatten.clean</id>
+							<phase>clean</phase>
+							<goals>
+								<goal>clean</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- For Flyway migration support -->
+				<plugin>
+					<groupId>org.flywaydb</groupId>
+					<artifactId>flyway-maven-plugin</artifactId>
+					<version>4.2.0</version>
+				</plugin>
+
+			</plugins>
+
+		</pluginManagement>
+	</build>
+
+	<!-- Remote Repo for artifact -->
+	<distributionManagement>
+		<repository>
+			<id>Nexus3</id>
+			<name>Nexus Repository</name>
+			<url>http://18.205.1.12:8081/repository/webapp/</url>
+		</repository>
+	</distributionManagement>
+</project>
