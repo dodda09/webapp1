@@ -118,7 +118,7 @@
 		<repository>
 			<id>Nexus3</id>
 			<name>Nexus Repository</name>
-			<url>http://18.205.1.12:8081/repository/webapp/</url>
+			<url>http://34.205.87.14:8081/repository/webapp/</url>
 		</repository>
 	</distributionManagement>
 </project>
