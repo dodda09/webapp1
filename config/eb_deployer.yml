@@ -110,13 +110,13 @@ common:
 
     - namespace: aws:ec2:vpc
       option_name: ELBSubnets
-      value: "subnet-0c626457,subnet-0c626457"
+      value: "subnet-2027866a,subnet-ae879af3"
     - namespace: aws:ec2:vpc      
       option_name: AssociatePublicIpAddress
       value: "true"
     - namespace: aws:ec2:vpc
       option_name: Subnets
-      value: "subnet-0c626457,subnet-0c626457"
+      value: "subnet-2027866a,subnet-ae879af3"
 
     # Following is an example which changes EC2 instance type
     # from t1.micro (default) to m1.small. Instances with t1.micro type sometime
