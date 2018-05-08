@@ -4,7 +4,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>webapp</artifactId>
 	<packaging>war</packaging>
-	<version>${revision}</version>
+	<version>1</version>
 	<name>Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
