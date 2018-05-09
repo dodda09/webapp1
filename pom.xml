@@ -4,7 +4,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>webapp</artifactId>
 	<packaging>war</packaging>
-	<version>1</version>
+	<version>${revision}</version>
 	<name>Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
@@ -118,7 +118,7 @@
 		<repository>
 			<id>Nexus3</id>
 			<name>Nexus Repository</name>
-			<url>http://35.170.69.224:8081/repository/webapp/</url>
+			<url>http://107.23.65.196:8081/repository/webapp/</url>
 		</repository>
 	</distributionManagement>
 </project>
